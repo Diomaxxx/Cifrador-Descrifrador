@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/icon/favicon.ico">
+    <title>PS1-Cifrador</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <h1>Cifrador Diogo</h1>
+      <p id="appDescription">
+        Esta aplicación te permite cifrar y descifrar textos utilizando una tabla ASCII personalizada. Puedes cargar un archivo de texto, seleccionar la longitud del cifrado, y guardar el texto cifrado junto con la tabla ASCII generada. También puedes cargar archivos previamente cifrados para descifrarlos utilizando la tabla ASCII correspondiente.
+      </p>
+      <button id="startButton" class="button">Comenzar</button>
+      <div id="switchContainer" class="hidden">
+        <label class="switch">
+          <input type="checkbox" id="toggleOption">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="theme-selector">
+        <button id="defaultTheme" class="theme-button" title="Tema Default"></button>
+        <button id="darkTheme" class="theme-button" title="Tema Oscuro"></button>
+        <button id="lightTheme" class="theme-button" title="Tema Claro"></button>
+        <button id="natureTheme" class="theme-button" title="Tema Naturaleza"></button>
+        <button id="oceanTheme" class="theme-button" title="Tema Océano"></button>
+        <button id="sunsetTheme" class="theme-button" title="Tema Atardecer"></button>
+      </div>
+    </div>
+    <div id="mainContent" class="card-content hidden">
+      <div id="cipherContent" class="content">
+        <h3>Cifrado de Texto</h3>
+        <label for="fileInput" class="file-input-label">Seleccionar archivo</label>
+        <input type="file" id="fileInput" class="file-input" accept=".txt, .pdf">
+        <textarea id="inputTextArea" class="text-area" placeholder="El contenido del archivo aparecerá aquí. También puedes escribir o editar texto directamente."></textarea>
+        <div class="select-wrapper">
+          <select id="cipherLength">
+            <option value="2">2 bytes</option>
+            <option value="4">4 bytes</option>
+            <option value="6">6 bytes</option>
+            <option value="8">8 bytes</option>
+            <option value="16">16 bytes</option>
+            <option value="32">32 bytes</option>
+          </select>
+        </div>
+        <button id="cipherButton" class="button">Cifrar</button>
+        <button id="saveButton" class="button">Guardar Archivos</button>
+        <div class="result-container">
+          <div>
+            <h4>Texto Cifrado</h4>
+            <textarea id="outputTextArea" class="text-area" readonly></textarea>
+          </div>
+          <div class="ascii-table" style="overflow-x:auto;">
+            <h4>Tabla ASCII de Cifrado</h4>
+            <table id="asciiTable"></table>
+          </div>
+        </div>
+      </div>
+
+      <div id="decipherContent" class="content">
+        <h3>Descifrado de Texto</h3>
+        <label for="cipheredFileInput" class="file-input-label">Seleccionar archivo cifrado</label>
+        <input type="file" id="cipheredFileInput" class="file-input" accept=".txt">
+        <p id="cipheredFileName" class="file-name"></p>
+        <label for="asciiFileInput" class="file-input-label">Seleccionar archivo ASCII</label>
+        <input type="file" id="asciiFileInput" class="file-input" accept=".txt">
+        <p id="asciiFileName" class="file-name"></p>
+        <button id="decipherButton" class="button">Descifrar</button>
+        <div class="result-container">
+          <div>
+            <h4>Texto Descifrado</h4>
+            <textarea id="decipheredTextArea" class="text-area" readonly></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <p>Procesando...</p>
+    </div>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
